@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<meta name="description" content="YourWebBuild builds professional websites for Indianapolis small businesses — handymen, barbers, cleaners, photographers, artists, and churches. Clean design, honest pricing."/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="About | YourWebBuild"/>
+<meta property="og:description" content="We believe every local business deserves a professional online presence — not just the ones who can afford big agencies."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://yourwebbuild.com/about.html"/>
+
+<title>About | YourWebBuild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="Images/ywb-blue-tab.png">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem;}
+.about-text p strong{color:var(--white);font-weight:500;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.stat{padding:1.5rem;border:1px solid var(--border);transition:border-color .3s,transform .3s cubic-bezier(.22,1,.36,1);}
+.stat:hover{border-color:var(--gold);transform:translateY(-2px);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:.25rem;}
+
+.about-visual{background:none;);border:none;height:520px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.ring{position:absolute;border-radius:50%;border:1px solid #c9a84c18;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;transition:transform 1s cubic-bezier(.22,1,.36,1),opacity 1s ease;}
+.about-visual.visible .ring{opacity:1;}
+.about-visual.visible .ring1{transform:translate(-50%,-50%) scale(1);width:160px;height:160px;transition-delay:.1s;}
+.about-visual.visible .ring2{transform:translate(-50%,-50%) scale(1);width:260px;height:260px;transition-delay:.25s;}
+.about-visual.visible .ring3{transform:translate(-50%,-50%) scale(1);width:360px;height:360px;transition-delay:.4s;}
+.about-monogram{width:60%;opacity:0;position:relative;z-index:1;transition:opacity .8s ease .5s;}
+.about-monogram img{width:100%;display:block;}
+.about-visual.visible .about-monogram{opacity:.9;}
+
+@media(max-width:900px){
+  .about-inner{grid-template-columns:1fr;}
+  .about-visual{height:380px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">YourWebBuild</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="contact.html" class="btn btn-fill">Get a Quote</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow">About</div>
+  <h1 class="page-title">Built for the <em>small business owner.</em></h1>
+  <p class="page-sub">Web design built specifically for Indianapolis's small business owners.</p>
+  <div class="gold-divider"></div>
+</div>
+
+<section>
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="gold-line reveal d1"></div>
+      <p class="reveal d2">At <strong>YourWebBuild</strong>, we believe every local business deserves a professional online presence — not just the ones who can afford big agencies. We work with handymen, barbers, cleaners, photographers, artists, and churches.</p>
+      <p class="reveal d3">Our promise: <strong>clean design, mobile-friendly, fast delivery, honest pricing.</strong> No tech jargon. Just a site that works for you.</p>
+      <div class="about-stats">
+        <div class="stat reveal d1"><div class="stat-num">7 days</div><div class="stat-label">Average first draft</div></div>
+        <div class="stat reveal d2"><div class="stat-num">100%</div><div class="stat-label">Mobile responsive</div></div>
+        <div class="stat reveal d3"><div class="stat-num">$0</div><div class="stat-label">Hidden fees</div></div>
+        <div class="stat reveal d4"><div class="stat-num">Local</div><div class="stat-label">Indy-based &amp; trusted</div></div>
+      </div>
+    </div>
+    <div class="about-visual reveal-right">
+      <div class="ring ring1"></div><div class="ring ring2"></div><div class="ring ring3"></div>
+      <div class="about-monogram"><img src="Images/portrait.png"></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <div class="cta-band-text">
+    <h3>Let's talk about your business.</h3>
+    <p>Free consultation, no pressure — just a conversation about what you need.</p>
+  </div>
+  <a href="contact.html" class="btn btn-fill">Get a Free Quote</a>
+</div>
+
+<footer>
+  <div class="footer-logo">YourWebBuild</div>
+  <div class="footer-links">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://billing.stripe.com/p/login/test_aFa7sK5XEgO0h2pbyrfMA00">Manage My Plan</a>
+  </div>
+  <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

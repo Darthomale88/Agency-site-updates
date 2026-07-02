@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="See real website examples built by YourWebBuild for Indianapolis small businesses — barbershops, photographers, cleaning companies, and more. Browse by page count to find the fit for your budget."/>
+<meta name="keywords" content="web design portfolio Indianapolis, small business website examples, affordable website examples Indiana"/>
+<meta name="author" content="YourWebBuild"/>
+<meta name="robots" content="index, follow"/>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Our Work | YourWebBuild"/>
+<meta property="og:description" content="Real website examples for Indianapolis small businesses, organized by page count and budget."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://yourwebbuild.com/portfolio.html"/>
+
+<title>Our Work | YourWebBuild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="Images/ywb-blue-tab.png">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* Filter tabs — these map directly to the 1/3/5 page pricing tiers */
+.filter-bar{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;padding:0 5% 3rem;}
+.filter-tab{padding:.6rem 1.4rem;border:1px solid var(--border);color:var(--muted);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif;}
+.filter-tab:hover{border-color:var(--gold);color:var(--gold);}
+.filter-tab.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:500;}
+
+/* Portfolio grid — same component as the homepage so cards can move between the two freely */
+.portfolio-section{padding:0 5% 6rem;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto; justify-content: center;}
+.port-card{border:1px solid var(--border);overflow:hidden;transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s; max-width: 380px;}
+.port-card:hover{transform:translateY(-6px);border-color:var(--gold);}
+.port-card.is-hidden{display:none;}
+.port-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.port-img.p1{background:linear-gradient(135deg,#1a2a1a,#243524);}
+.port-img.p2{background:linear-gradient(135deg,#1a1a2a,#232340);}
+.port-img.p3{background:linear-gradient(135deg,#A1869E,#797596);  /*background-image: url("Images/photography.png");*/ background-size: cover; z-index: 2; background-position: center;}
+.port-label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;}
+.port-label span{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--white);}
+.port-info{padding:1.25rem;border-top:1px solid var(--border);}
+.port-info h4{font-size:1rem;font-weight:500;margin-bottom:.25rem;}
+.port-info p{font-size:.82rem;color:var(--muted);}
+.port-outcome{font-size:.8rem;color:var(--gold);margin-top:.45rem;line-height:1.5;}
+.port-tag{display:inline-block;padding:.2rem .6rem;border:1px solid var(--gold);color:var(--gold);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.5rem;}
+
+
+/*Portfolio images*/
+.photography img{}
+
+
+
+/* Coming-soon placeholder so the grid never looks sparse while new mocks are in progress */
+.port-card.coming-soon{display:flex;align-items:center;justify-content:center;min-height:300px;border-style:dashed;}
+.coming-soon-inner{text-align:center;padding:2rem;color:var(--muted);}
+.coming-soon-inner span{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--gold);margin-bottom:.4rem;}
+
+@media(max-width:640px){
+  .filter-bar{gap:.5rem;}
+  .filter-tab{padding:.5rem 1rem;font-size:.72rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">YourWebBuild</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html" class="active">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="contact.html" class="btn btn-fill">Get a Quote</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow">Our Work</div>
+  <h1 class="page-title">See what fits <em>your budget.</em></h1>
+  <p class="page-sub">Every business is different, so every site is sized differently. Filter by page count to see examples closest to what you have in mind.</p>
+  <div class="gold-divider"></div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-tab active" data-filter="all">All Projects</button>
+  <button class="filter-tab" data-filter="1">1-Page Sites</button>
+  <button class="filter-tab" data-filter="3">3-Page Sites</button>
+  <button class="filter-tab" data-filter="5">5+ Page Sites</button>
+</div>
+
+<section class="portfolio-section">
+  <div class="portfolio-grid" id="portfolioGrid">
+
+    <!-- 1-PAGE / STARTER -->
+    <a href="https://darthomale88.github.io/Clean-house-site-demo/" class="port-card reveal d1" data-tier="1">
+      <div class="port-img p1">
+        <div class="port-label"><span>Clean House</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>
+      </div>
+      <div class="port-info">
+        <h4>Clean House Power Washing</h4>
+        <p>1-page site with contact form, service list, and portfolio</p>
+        <p class="port-outcome">Built to turn local searches into booked jobs.</p>
+        <span class="port-tag">Starter Site</span>
+      </div>
+    </a>
+	
+    <a href="https://darthomale88.github.io/one-page-barber" class="port-card reveal d1" data-tier="1">
+      <div class="port-img p1">
+        <div class="port-label"><span>Barber</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>
+      </div>
+      <div class="port-info">
+        <h4>Barber</h4>
+        <p>1-page site with contact form, service list, and portfolio</p>
+        <p class="port-outcome">Built to turn local searches into booked appointments.</p>
+        <span class="port-tag">Starter Site</span>
+      </div>
+    </a>
+
+    <!-- 5-PAGE / BUSINESS -->
+	
+
+    <!-- 5-PAGE / PREMIUM -->
+    <a href="https://darthomale88.github.io/Photography-site" class="port-card reveal d3" data-tier="5">
+      <!-- TODO: wrap this card in <a href="LIVE_DEMO_URL"> once a demo link exists -->
+      <div class="port-img p3 ">
+        <div class="port-label"><span>Mara</span><p style="font-size:.75rem;color:#faffb0;letter-spacing:.1em;text-transform:uppercase;">Photography</p></div>
+      </div>
+      <div class="port-info">
+        <h4>Mara Leigh Photography</h4>
+        <p>5-page portfolio with full gallery, pricing, and contact</p>
+        <p class="port-outcome">Made to showcase her work and book more sessions.</p>
+        <span class="port-tag">Premium Site</span>
+      </div>
+    </a>
+	
+	<a href="https://darthomale88.github.io/Barber-site" class="port-card reveal d2" data-tier="5">   
+      <!-- TODO: wrap this card in <a href="LIVE_DEMO_URL"> once a demo link exists -->
+      <div class="port-img p2">
+        <div class="port-label"><span>Prestige</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Barbershop</p></div>
+      </div>
+      <div class="port-info">
+        <h4>Prestige Cuts Barbershop</h4>
+        <p>5-page site with gallery, testimonials, and booking CTA</p>
+        <p class="port-outcome">Designed to keep the chairs full with easy online booking.</p>
+        <span class="port-tag">premium Site</span>
+      </div>
+    </a>
+
+    <!--
+      ADD NEW PROJECTS HERE. Copy any card above and change:
+        - data-tier: "1", "3", or "5" — must match a filter-tab's data-filter
+        - the .port-img class: p1 / p2 / p3 (cycle through them, or add p4/p5 below for more color variety)
+        - the text content and the port-tag label (Starter / Business / Premium Site)
+      New cards are picked up by the filter bar automatically — no JS changes needed.
+    -->
+
+    <div class="port-card coming-soon reveal d4">
+      <div class="coming-soon-inner">
+        <span>More on the way</span>
+        Lawn care, power washing, and photography builds are in progress.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <div class="cta-band-text">
+    <h3>Don't see your industry?</h3>
+    <p>Every site here started as a blank page too. Let's talk about what yours could look like.</p>
+  </div>
+  <a href="contact.html" class="btn btn-fill">Start Your Project</a>
+</div>
+
+<footer>
+  <div class="footer-logo">YourWebBuild</div>
+  <div class="footer-links">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://billing.stripe.com/p/login/test_aFa7sK5XEgO0h2pbyrfMA00">Manage My Plan</a>
+  </div>
+  <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// Tier filtering — cards with no data-tier (like "coming soon") show under every filter
+const tabs = document.querySelectorAll('.filter-tab');
+const cards = document.querySelectorAll('#portfolioGrid .port-card');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    cards.forEach(card => {
+      const tier = card.dataset.tier;
+      const show = filter === 'all' || !tier || tier === filter;
+      card.classList.toggle('is-hidden', !show);
+    });
+  });
+});
+</script>
+</body>
+</html>

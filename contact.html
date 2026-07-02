@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<meta name="description" content="Get a free quote from YourWebBuild. Tell us about your Indianapolis small business and we'll reach out within 24 hours to schedule your free consultation."/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Contact | YourWebBuild"/>
+<meta property="og:description" content="Fill out the form and we'll reach out within 24 hours to schedule your free consultation."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://yourwebbuild.com/contact.html"/>
+
+<title>Contact | YourWebBuild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="Images/ywb-blue-tab.png">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;margin:0 auto;}
+.contact-info p{color:var(--muted);line-height:1.9;margin-bottom:2rem;}
+.contact-detail{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;font-size:.9rem;color:var(--muted);}
+.contact-detail .icon{color:var(--gold);}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:.4rem;}
+.form-group label{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.form-group input,.form-group textarea,.form-group select{background:var(--navy3);border:1px solid var(--border);color:var(--white);padding:.85rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold);}
+.form-group textarea{min-height:110px;resize:vertical;}
+.form-group select option{background:var(--navy2);}
+
+/* Budget slider */
+.budget-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:.2rem 0 .9rem;}
+.budget-value{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold);line-height:1;}
+.budget-floor-note{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.budget-slider{-webkit-appearance:none;appearance:none;width:100%;height:3px;padding:0;border:none;background:var(--border);border-radius:999px;cursor:pointer;}
+.budget-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);border:3px solid var(--navy3);box-shadow:0 2px 12px rgba(201,168,76,.45);cursor:pointer;transition:transform .15s;}
+.budget-slider::-webkit-slider-thumb:hover{transform:scale(1.08);}
+.budget-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);border:3px solid var(--navy3);box-shadow:0 2px 12px rgba(201,168,76,.45);cursor:pointer;}
+.budget-slider:focus-visible{outline:none;}
+.budget-slider:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(201,168,76,.28);}
+.budget-scale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:.6rem;}
+
+@media(max-width:900px){
+  .contact-inner{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">YourWebBuild</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="contact.html" class="btn btn-fill">Get a Quote</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow">Contact</div>
+  <h1 class="page-title">Let's build <em>something.</em></h1>
+  <p class="page-sub">Fill out the form and we'll reach out within 24 hours to schedule your free consultation.</p>
+  <div class="gold-divider"></div>
+</div>
+
+<section>
+  <div class="contact-inner">
+    <div class="contact-info reveal-left">
+
+      <!-- PHASE 1 intro (active). Swap for the Phase 2 paid-strategy-session
+           version once you're getting steady referrals/reviews:
+           "Fill out the form and we will reach out within 24 hours to book
+           your Website Strategy Session. You walk away with a clear plan
+           for your site, and if you move forward, the fee is credited
+           toward your project." -->
+      <p>No cost, no obligation, just a conversation about what your business needs.</p>
+
+      <div class="contact-detail reveal d4"><span class="icon">✦</span> Indianapolis, Indiana</div>
+      <div class="contact-detail reveal d5"><span class="icon">✦</span> hello@yourwebbuild.com</div>
+      <div class="contact-detail reveal d5"><span class="icon">✦</span> (317) 731-2108</div>
+    </div>
+
+    <div class="contact-form reveal-right">
+      <form action="https://formspree.io/f/mlgvyvbv" method="POST">
+
+        <input type="hidden" name="_subject" value="New Website Lead - YourWebBuild">
+
+        <!-- Honeypot Spam Protection -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="John Smith" required />
+        </div>
+
+        <div class="form-group">
+          <label>Business Name</label>
+          <input type="text" name="business" placeholder="Smith's Lawn Care" required />
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="you@yourbusiness.com" required />
+        </div>
+
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(317) 555-0123" required />
+        </div>
+
+        <div class="form-group">
+          <label>What Type of Business Are You?</label>
+          <input type="text" name="industry" placeholder="e.g. Barbershop, Cleaning service, Church, Contractor" required />
+        </div>
+
+        <div class="form-group">
+          <label>What Kind of Site Do You Need?</label>
+          <select name="sitetype" required>
+            <option value="">Select an option...</option>
+            <option>1-page site (single service or landing page)</option>
+            <option>3-page site (Home, About, Services, Contact)</option>
+            <option>5+ page site (gallery, church, portfolio)</option>
+            <option>Not sure, help me decide</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Your Budget</label>
+          <div class="budget-head">
+            <span class="budget-value" id="budgetValue" aria-live="polite">$800</span>
+            <span class="budget-floor-note">Projects start at $500</span>
+          </div>
+          <input type="range" id="budget" class="budget-slider"
+                 min="500" max="3500" step="250" value="800"
+                 aria-label="Project budget in dollars" />
+          <input type="hidden" name="budget" id="budgetHidden" value="$800" />
+          <div class="budget-scale"><span>$500</span><span>$3,500+</span></div>
+        </div>
+
+        <div class="form-group">
+          <label>When Are You Hoping to Launch?</label>
+          <select name="timeline" required>
+            <option value="">Select an option...</option>
+            <option>ASAP, ready to start now</option>
+            <option>Within 1 to 3 months</option>
+            <option>Just exploring for now</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea name="message"
+            placeholder="e.g. I run a small barbershop and need online booking and a gallery of my work. I have a logo but no photos yet."
+            required></textarea>
+        </div>
+
+        <!-- PHASE 2: change to "Request My Strategy Session ✦" when you go paid -->
+        <button type="submit" class="btn btn-fill" style="width:100%;border:none;cursor:pointer;font-size:.9rem;">
+          Send My Request ✦
+        </button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">YourWebBuild</div>
+  <div class="footer-links">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://billing.stripe.com/p/login/test_aFa7sK5XEgO0h2pbyrfMA00">Manage My Plan</a>
+  </div>
+  <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+/* Live budget value. Only the formatted hidden field submits, so your
+   lead email reads "$1,500" instead of a raw number. */
+(function(){
+  var slider = document.getElementById('budget');
+  var out    = document.getElementById('budgetValue');
+  var hidden = document.getElementById('budgetHidden');
+  if(!slider) return;
+  function fmt(n){
+    var label = '$' + Number(n).toLocaleString('en-US');
+    if(Number(n) >= Number(slider.max)) label += '+';
+    return label;
+  }
+  function update(){
+    var t = fmt(slider.value);
+    out.textContent = t;
+    if(hidden) hidden.value = t;
+  }
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+</body>
+</html>

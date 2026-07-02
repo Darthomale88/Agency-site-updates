@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="YourWebBuild designs professional, mobile-ready websites for small businesses in Indianapolis, IN. Affordable web design starting at $500. Get a free quote today."/>
+<meta name="keywords" content="web design Indianapolis, small business website Indianapolis, affordable web design Indiana, local web designer Indy"/>
+<meta name="author" content="YourWebBuild"/>
+<meta name="robots" content="index, follow"/>
+
+<meta property="og:title" content="YourWebBuild — Affordable Web Design in Indianapolis"/>
+<meta property="og:description" content="Professional websites for small businesses starting at $500. Mobile-ready, fast delivery, honest pricing."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://yourwebbuild.com"/>
+<meta property="og:image" content="https://yourwebbuild.com/Images/og-preview.jpg"/>
+
+<title>YourWebBuild | Web Design for Indianapolis Small Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="Images/ywb-blue-tab.png">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ---- HERO --*/
+/*.overlay{ position: absolute; inset:0; height: 100%, width: 100%; background: rgba(0,0,0,1);}*/
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:6rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0; background: radial-gradient(ellipse 55% 65% at 75% 45%,#c9a84c0f 0%,transparent 70%);}
+.hero-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;width:100%;}
+.hero-tag{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) .2s forwards;}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,5vw,4.5rem);font-weight:700;line-height:1.08;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) .4s forwards;}
+h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:440px;margin-bottom:2.5rem;line-height:1.85;opacity:0;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) .6s forwards;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) .8s forwards;}
+.hero-badges{display:flex;gap:1.5rem;margin-top:2.5rem;opacity:0;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) 1s forwards;}
+.badge{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.badge::before{content:'✦';color:var(--gold);font-size:.65rem;}
+
+.hero-laptop{opacity:0;animation:laptopIn 1s cubic-bezier(.22,1,.36,1) .5s forwards;position:relative;background:transparent;}
+@keyframes laptopIn{from{opacity:0;transform:translateX(40px) translateY(10px);}to{opacity:1;transform:translateX(0) translateY(0);}}
+.laptop-wrap{display:flex;justify-content:center;position:relative;width:100%;max-width:520px;margin:0 auto;background:inherit;animation:float 5s ease-in-out 1.5s infinite;}
+.laptop-wrap img{width:150%;}
+.laptop-wrap::before{content:'';position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:60%;height:30px;background: radial-gradient(ellipse,#c9a84c20 0%,transparent 70%);pointer-events:none;}
+.laptop-foot{width:80%;margin:0 auto;height:6px;background:#0d1117;border-radius:0 0 8px 8px;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+.hero-scroll{position:absolute;bottom:2.5rem;left:5%;display:flex;align-items:center;gap:.75rem;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn 1s ease 1.3s forwards;}
+.hero-scroll::before{content:'';display:block;width:30px;height:1px;background:var(--muted);}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ---- HERO video background --*/
+#myVideo {  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+/*-------scrolling mockup--------*//*
+
+.laptop-frame {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 3;
+  background: blue;
+  padding: 3px;
+}*/
+
+.laptop-screen {
+  position: absolute;
+  top: 10.5%;
+  left: 0%;
+  width: 100%;
+  height: 64%;
+  overflow: hidden;
+  border-radius: 6px 6px 0 0;
+  z-index: 2;
+  background: #000;
+}
+
+.laptop-screen img{
+width: 100%;
+}
+
+.scrolling-site {
+  width: 100%;
+  display: block;
+   
+  animation: scrollSite 24s ease-in-out infinite alternate;
+}
+
+@keyframes scrollSite {
+  0% {
+    transform: translateY(0);
+	}
+5% {
+    transform: translateY(0);
+	}
+ 97% {
+    transform: translateY(-87.5%);	
+  }
+  100% {
+    transform: translateY(-87.5%);
+  }
+}
+
+
+/* Services */
+#services{background:var(--navy2);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
+.service-card{padding:2rem;border:1px solid var(--border);background:var(--navy3);transition:border-color .3s,transform .3s cubic-bezier(.22,1,.36,1);}
+.service-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:700;color:#ffffff3a;line-height:1;margin-bottom:1rem;transition:color .3s;}
+.service-card:hover .service-num{color:var(--gold);}
+.service-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:.75rem;}
+.service-card p{font-size:.9rem;color:var(--muted);line-height:1.7;}
+
+/* Explore — short links out to the dedicated pages */
+#explore{background:var(--navy);}
+.explore-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
+.explore-card{display:block;padding:2rem;border:1px solid var(--border);background:var(--navy3);transition:border-color .3s,transform .3s cubic-bezier(.22,1,.36,1);}
+.explore-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.explore-mark{color:var(--gold);font-size:1.1rem;margin-bottom:1rem;display:block;}
+.explore-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:.75rem;}
+.explore-card p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+.explore-link{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
+
+/* Testimonials */
+#testimonials{background:var(--navy2);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.testi-card{padding:2rem;border:1px solid var(--border);background:var(--navy3);transition:border-color .3s,transform .3s cubic-bezier(.22,1,.36,1);}
+.testi-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1.7;color:var(--white);margin-bottom:1.5rem;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:.75rem;}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:600;color:var(--navy);flex-shrink:0;}
+.testi-name{font-size:.88rem;font-weight:500;}
+.testi-biz{font-size:.78rem;color:var(--muted);}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-laptop{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">YourWebBuild</a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html#services" class="active">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="contact.html" class="btn btn-fill">Get a Quote</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section id="hero">
+<!--<video autoplay muted loop id="myVideo"> <source src="Images/hero-video.mp4" type="video/mp4"> </video>-->
+  
+
+  <div class="overlay"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Web Design · Indianapolis, IN</div>
+      <h1>Your business deserves a <em>website that works.</em></h1>
+      <p class="hero-sub">Professional, mobile-ready websites for small businesses without the agency price tag. Built in Indianapolis for the barbers, cleaners, contractors, and churches who keep this city running.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn btn-fill">Get a Free Quote</a>
+        <a href="portfolio.html" class="btn">See Our Work</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Mobile Friendly</span>
+        <span class="badge">Fast Delivery</span>
+        <span class="badge">Honest Pricing</span>
+      </div>
+    </div>
+
+    <div class="hero-laptop">
+      <div class="laptop-wrap">
+        <img src="Images/laptop.png" alt="laptop mockup" class="laptop-frame">
+		<div class="laptop-screen">
+			<img src="Images/tall-screenshot.png" class="scrolling-site">
+		</div>
+        <div class="laptop-foot"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<section id="services">
+  <div class="gold-line reveal d1"></div>
+  <h2 class="section-title reveal d2">What We Build</h2>
+  <p class="section-sub reveal d3">We build clean, fast, and professional sites. Every site we deliver is built to convert visitors into customers.</p>
+  <div class="services-grid">
+    <div class="service-card reveal d1"><div class="service-num">01</div><h3>Website Design</h3><p>Custom-designed, mobile-responsive sites that look great on every screen and load fast — built from scratch for your business.</p></div>
+    <div class="service-card reveal d2"><div class="service-num">02</div><h3>Local SEO Setup</h3><p>Proper SEO titles, meta descriptions, and Google Maps integration so your business shows up when people search locally.</p></div>
+    <div class="service-card reveal d3"><div class="service-num">03</div><h3>Monthly Care Plans</h3><p>Hosting, backups, updates, and small edits handled for you so your site stays fresh and you stay focused on your business.</p></div>
+    <div class="service-card reveal d4"><div class="service-num">04</div><h3>Google Business Profile</h3><p>We set up or optimize your Google Business Profile so you appear in local map results and build credibility with reviews.</p></div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="gold-line reveal d1"></div>
+  <h2 class="section-title reveal d2">Take a Closer Look</h2>
+  <p class="section-sub reveal d3">Everything you'd want to know before reaching out.</p>
+  <div class="explore-grid">
+    <a class="explore-card reveal d1" href="process.html">
+      <span class="explore-mark">✦</span>
+      <h3>Our Process</h3>
+      <p>From first conversation to launch day, here's exactly what to expect when you work with us.</p>
+      <span class="explore-link">See the process →</span>
+    </a>
+    <a class="explore-card reveal d2" href="portfolio.html">
+      <span class="explore-mark">✦</span>
+      <h3>Recent Work</h3>
+      <p>A look at some of the businesses we've helped get online and look professional.</p>
+      <span class="explore-link">View the portfolio →</span>
+    </a>
+    <a class="explore-card reveal d3" href="pricing.html">
+      <span class="explore-mark">✦</span>
+      <h3>Pricing &amp; Care Plans</h3>
+      <p>One-time builds starting at $500, plus monthly care plans from $49/mo to keep your site running.</p>
+      <span class="explore-link">See pricing →</span>
+    </a>
+    <a class="explore-card reveal d4" href="about.html">
+      <span class="explore-mark">✦</span>
+      <h3>About Us</h3>
+      <p>We believe every local business deserves a professional online presence; not just the ones who can afford big agencies.</p>
+      <span class="explore-link">Meet the builder →</span>
+    </a>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="gold-line reveal d1"></div>
+  <h2 class="section-title reveal d2">What Clients Say</h2>
+  <p class="section-sub reveal d3">Real feedback from real small business owners.</p>
+  <div class="testi-grid">
+    <div class="testi-card reveal d1"><p class="testi-quote">"I didn't think a website was worth it until I started getting calls from Google. Now I can't imagine not having one."</p><div class="testi-author"><div class="testi-avatar">MR</div><div><div class="testi-name">Marcus R.</div><div class="testi-biz">GreenCut Lawn Care</div></div></div></div>
+    <div class="testi-card reveal d2"><p class="testi-quote">"Fast, professional, and they actually listened. My clients love the new site and bookings have gone up."</p><div class="testi-author"><div class="testi-avatar">TJ</div><div><div class="testi-name">Tanya J.</div><div class="testi-biz">Prestige Cuts Barbershop</div></div></div></div>
+    <div class="testi-card reveal d3"><p class="testi-quote">"They handle all the updates. It's one less thing to worry about — and the site looks incredible."</p><div class="testi-author"><div class="testi-avatar">DK</div><div><div class="testi-name">David K.</div><div class="testi-biz">Handyman Services</div></div></div></div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <div class="cta-band-text">
+    <h3>Ready to get started?</h3>
+    <p>Tell us about your business and we'll get back to you within 24 hours with a free quote.</p>
+  </div>
+  <a href="contact.html" class="btn btn-fill">Get a Free Quote</a>
+</div>
+
+<footer>
+  <div class="footer-logo">YourWebBuild</div>
+  <div class="footer-links">
+    <a href="index.html#services">Services</a>
+    <a href="process.html">Process</a>
+    <a href="portfolio.html">Work</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://billing.stripe.com/p/login/test_aFa7sK5XEgO0h2pbyrfMA00">Manage My Plan</a>
+  </div>
+  <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
