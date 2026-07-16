@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | YourWebBuild (Modal Demo)</title>
+
+<!--
+  ============================================================
+  HOW TO USE THIS FILE
+  ============================================================
+  This is a self-contained DEMO so you can test the popup before
+  wiring it into your real pricing page. It fakes a pricing page
+  around the modal so you can see how it sits on top of content.
+
+  To install on your ACTUAL pricing page, copy three things into
+  your existing pricing.html:
+
+  1. The CSS block marked "MODAL CSS - COPY TO <head>" into your
+     <style> tag (or your shared stylesheet).
+
+  2. The HTML block marked "MODAL MARKUP - COPY INTO <body>" -
+     paste it anywhere inside your <body>, doesn't matter where.
+
+  3. The <script> block at the bottom marked "MODAL SCRIPT" -
+     paste it right before your closing </body> tag.
+
+  Then in Stripe, set each Payment Link's "after payment" redirect to:
+
+    https://yourwebbuild.com/pricing.html?success=true&plan=Maintain
+    https://yourwebbuild.com/pricing.html?success=true&plan=Grow
+    https://yourwebbuild.com/pricing.html?success=true&plan=Scale
+
+  (swap in your real pricing page filename/path, and match plan name
+  per link). The modal reads the "plan" parameter to personalize the
+  message, and "success=true" is what triggers it to open.
+  ============================================================
+-->
+
+<style>
+  :root {
+    --navy-deep: #0B1220;
+    --navy-panel: #141D33;
+    --navy-line: #283454;
+    --gold: #C9A227;
+    --gold-soft: #E3C766;
+    --ivory: #F2EEE3;
+    --slate: #9AA6BE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy-deep);
+    color: var(--ivory);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 60px 20px;
+  }
+
+  /* ---- fake pricing page content, for demo purposes only ---- */
+  .demo-page {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .demo-page h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+  }
+  .demo-page p {
+    color: var(--slate);
+    margin-bottom: 40px;
+  }
+  .demo-trigger {
+    background: var(--gold);
+    color: var(--navy-deep);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .demo-trigger:hover { background: var(--gold-soft); }
+  .demo-note {
+    margin-top: 60px;
+    font-size: 0.82rem;
+    color: var(--navy-line);
+  }
+
+  /* ============================================================
+     MODAL CSS - COPY TO <head>
+     ============================================================ */
+  .twb-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 18, 32, 0.78);
+    backdrop-filter: blur(3px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9999;
+    animation: twb-fade 0.25s ease-out;
+  }
+
+  .twb-modal-overlay.twb-open {
+    display: flex;
+  }
+
+  @keyframes twb-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .twb-card {
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--navy-panel);
+    border: 1px solid var(--navy-line);
+    border-radius: 6px;
+    padding: 40px 32px 32px;
+    position: relative;
+    text-align: center;
+    animation: twb-rise 0.35s ease-out both;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  @keyframes twb-rise {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .twb-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--slate);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .twb-close:hover {
+    color: var(--gold-soft);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .twb-close:focus-visible {
+    outline: 2px solid var(--gold-soft);
+    outline-offset: 2px;
+  }
+
+  .twb-check {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 22px;
+  }
+
+  .twb-check circle {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.4;
+    opacity: 0.55;
+  }
+
+  .twb-check path {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+    animation: twb-draw 0.6s 0.35s ease-out forwards;
+  }
+
+  @keyframes twb-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .twb-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.9rem;
+    color: var(--ivory);
+    margin-bottom: 10px;
+  }
+
+  .twb-lede {
+    font-size: 0.96rem;
+    line-height: 1.55;
+    color: var(--slate);
+    margin-bottom: 24px;
+  }
+
+  .twb-lede strong {
+    color: var(--gold-soft);
+    font-weight: 600;
+  }
+
+  .twb-divider {
+    width: 52px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+    margin: 0 auto 24px;
+  }
+
+  .twb-features {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .twb-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--ivory);
+    line-height: 1.4;
+  }
+
+  .twb-features li .twb-dot {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 7px;
+  }
+
+  .twb-features li span.twb-label {
+    color: var(--ivory);
+    font-weight: 500;
+  }
+
+  .twb-features li span.twb-detail {
+    color: var(--slate);
+  }
+
+  .twb-portal-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+    padding: 13px 0;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .twb-portal-btn:hover {
+    background: var(--gold-soft);
+    transform: translateY(-1px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .twb-modal-overlay, .twb-card, .twb-check path { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; }
+  }
+
+  @media (max-width: 480px) {
+    .twb-card { padding: 34px 22px 26px; }
+    .twb-card h2 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ==== fake pricing page content, remove this whole block on your real page ==== -->
+  <div class="demo-page">
+    <h1>Care Plan Pricing</h1>
+    <p>This stands in for your real pricing page content underneath the modal.</p>
+    <button class="demo-trigger" onclick="twbSimulateSuccess('Grow')">Simulate successful Grow plan checkout</button>
+    <p class="demo-note">In production this triggers automatically from Stripe's redirect URL, not a button click.</p>
+  </div>
+
+  <!-- ============================================================
+       MODAL MARKUP - COPY INTO <body> of your real pricing page
+       ============================================================ -->
+  <div class="twb-modal-overlay" id="twbOverlay" role="dialog" aria-modal="true" aria-labelledby="twbTitle">
+    <div class="twb-card">
+      <button class="twb-close" id="twbClose" aria-label="Close">&times;</button>
+
+      <svg class="twb-check" viewBox="0 0 56 56" aria-hidden="true">
+        <circle cx="28" cy="28" r="26"></circle>
+        <path d="M17 29 L25 37 L40 20"></path>
+      </svg>
+
+      <h2 id="twbTitle">You're All Set</h2>
+      <p class="twb-lede" id="twbLede">
+        Thanks for joining <strong id="twbPlanName">YourWebBuild Care Plans</strong>. Your site is officially covered, and a confirmation has been sent to your inbox.
+      </p>
+
+      <div class="twb-divider"></div>
+
+      <ul class="twb-features">
+        <li>
+          <span class="twb-dot"></span>
+          <span><span class="twb-label">Update your payment method.</span> <span class="twb-detail">Swap in a new card whenever yours changes.</span></span>
+        </li>
+        <li>
+          <span class="twb-dot"></span>
+          <span><span class="twb-label">View billing history.</span> <span class="twb-detail">Download any past invoice or receipt.</span></span>
+        </li>
+        <li>
+          <span class="twb-dot"></span>
+          <span><span class="twb-label">Change or cancel your plan.</span> <span class="twb-detail">Adjust your tier or end your subscription at any time, no questions asked.</span></span>
+        </li>
+      </ul>
+
+      <a href="#" class="twb-portal-btn" id="twbPortalBtn">Manage My Plan</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MODAL SCRIPT - COPY before closing </body> of your real page
+       ============================================================ -->
+  <script>
+    (function () {
+      const overlay = document.getElementById('twbOverlay');
+      const closeBtn = document.getElementById('twbClose');
+      const planNameEl = document.getElementById('twbPlanName');
+      const portalBtn = document.getElementById('twbPortalBtn');
+
+      // TODO: replace with your real Stripe Customer Portal link
+      // Stripe Dashboard -> Settings -> Billing -> Customer portal
+      portalBtn.href = 'https://billing.stripe.com/p/login/aFa7sK5XEgO0h2pbyrfMA00'; 
+      function openModal(planName) {
+        if (planName) {
+          planNameEl.textContent = 'the ' + planName + ' Plan';
+        }
+        overlay.classList.add('twb-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('twb-open');
+        document.body.style.overflow = '';
+        // Strip success/plan params so a refresh doesn't reopen it,
+        // without navigating away from the pricing page.
+        const url = new URL(window.location.href);
+        url.searchParams.delete('success');
+        url.searchParams.delete('plan');
+        window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+
+      // click outside the card closes it too
+      overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeModal();
+      });
+
+      // Esc key closes it
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('twb-open')) closeModal();
+      });
+
+      // Check the URL on page load for Stripe's redirect params
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('success') === 'true') {
+        openModal(params.get('plan'));
+      }
+
+      // expose closeModal globally in case you want a "back to pricing" link inside the modal later
+      window.twbCloseModal = closeModal;
+    })();
+
+    // Demo-only helper, remove this function on your real page
+    function twbSimulateSuccess(plan) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('success', 'true');
+      url.searchParams.set('plan', plan);
+      window.location.href = url.toString();
+    }
+  </script>
+
+</body>
+</html>

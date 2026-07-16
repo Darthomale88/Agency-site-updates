@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're All Set | YourWebBuild</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #0B1220;
+    --navy-panel: #141D33;
+    --navy-line: #283454;
+    --gold: #C9A227;
+    --gold-soft: #E3C766;
+    --ivory: #F2EEE3;
+    --slate: #9AA6BE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy-deep);
+    background-image: radial-gradient(circle at 50% -10%, rgba(201,162,39,0.08), transparent 55%);
+    color: var(--ivory);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+  }
+
+  .card {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    animation: rise 0.7s ease-out both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .check {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 28px;
+  }
+
+  .check circle {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.4;
+    opacity: 0.55;
+  }
+
+  .check path {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+    animation: draw 0.6s 0.5s ease-out forwards;
+  }
+
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2.6rem;
+    letter-spacing: 0.01em;
+    color: var(--ivory);
+    margin-bottom: 14px;
+  }
+
+  .lede {
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--slate);
+    max-width: 420px;
+    margin: 0 auto 36px;
+  }
+
+  .lede strong {
+    color: var(--gold-soft);
+    font-weight: 600;
+  }
+
+  .divider {
+    width: 64px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+    margin: 0 auto 36px;
+  }
+
+  .panel {
+    background: var(--navy-panel);
+    border: 1px solid var(--navy-line);
+    border-radius: 4px;
+    padding: 32px 28px;
+    text-align: left;
+  }
+
+  .panel h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--ivory);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .panel p.sub {
+    font-size: 0.9rem;
+    color: var(--slate);
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.94rem;
+    color: var(--ivory);
+    line-height: 1.45;
+  }
+
+  .features li .dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 8px;
+  }
+
+  .features li span.label {
+    color: var(--ivory);
+    font-weight: 500;
+  }
+
+  .features li span.detail {
+    color: var(--slate);
+  }
+
+  .portal-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 14px 0;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .portal-btn:hover {
+    background: var(--gold-soft);
+    transform: translateY(-1px);
+  }
+
+  .portal-btn:focus-visible {
+    outline: 2px solid var(--gold-soft);
+    outline-offset: 3px;
+  }
+
+  .home-link {
+    display: inline-block;
+    margin-top: 32px;
+    color: var(--slate);
+    font-size: 0.88rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .home-link:hover {
+    color: var(--gold-soft);
+    border-color: var(--gold-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .check path { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; }
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 2.1rem; }
+    .panel { padding: 26px 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <svg class="check" viewBox="0 0 56 56" aria-hidden="true">
+      <circle cx="28" cy="28" r="26"></circle>
+      <path d="M17 29 L25 37 L40 20"></path>
+    </svg>
+
+    <h1>You're All Set</h1>
+    <p class="lede" id="ledeText">
+      Thanks for joining <strong id="planName">YourWebBuild Care Plans</strong>. Your site is officially covered, and a confirmation has been sent to your inbox.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="panel">
+      <h2>Manage Your Plan</h2>
+      <p class="sub">Everything below is handled by you, anytime, no email required.</p>
+
+      <ul class="features">
+        <li>
+          <span class="dot"></span>
+          <span><span class="label">Update your payment method.</span> <span class="detail">Swap in a new card whenever yours changes.</span></span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><span class="label">View billing history.</span> <span class="detail">Download any past invoice or receipt.</span></span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><span class="label">Change or cancel your plan.</span> <span class="detail">Adjust your tier or end your subscription at any time, no questions asked.</span></span>
+        </li>
+      </ul>
+
+      <a href="#" class="portal-btn" id="portalBtn">Manage My Plan</a>
+    </div>
+
+    <a href="/" class="home-link">Return to yourwebbuild.com</a>
+  </div>
+
+  <script>
+    // Optional personalization: if a Payment Link's "after payment" redirect
+    // includes ?plan=Maintain (or Grow / Scale), this swaps the generic
+    // message for the plan name. Safe to ignore if you don't set this up.
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get('plan');
+    if (plan) {
+      document.getElementById('planName').textContent = 'the ' + plan + ' Plan';
+    }
+
+    // TODO: Replace with your real Customer Portal link.
+    // Find it in Stripe Dashboard: Settings -> Billing -> Customer portal
+    document.getElementById('portalBtn').href = 'https://billing.stripe.com/p/login/REPLACE_ME';
+  </script>
+
+</body>
+</html>
