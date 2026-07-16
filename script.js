@@ -67,3 +67,18 @@ document.querySelectorAll('a[href*="#"]').forEach(link => {
     });
   }
 });
+
+// Show call FAB after scrolling past hero
+const callFab = document.querySelector('.call-fab');
+
+if (callFab) {
+  const showThreshold = window.innerHeight * 0.6; // adjust: 0.6 = 60% of viewport height
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > showThreshold) {
+      callFab.classList.add('show');
+    } else {
+      callFab.classList.remove('show');
+    }
+  }, { passive: true });
+}

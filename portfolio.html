@@ -37,7 +37,8 @@
 .port-card{border:1px solid var(--border);overflow:hidden;transition:transform .4s cubic-bezier(.22,1,.36,1),border-color .3s; max-width: 380px;}
 .port-card:hover{transform:translateY(-6px);border-color:var(--gold);}
 .port-card.is-hidden{display:none;}
-.port-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.port-img{height:250px;display:flex;justify-content:center;position:relative;overflow:hidden;}
+.port-img img{position: absolute; width: 100%; top: 0; left: 0;}
 .port-img.p1{background:linear-gradient(135deg,#1a2a1a,#243524);}
 .port-img.p2{background:linear-gradient(135deg,#1a1a2a,#232340);}
 .port-img.p3{background:linear-gradient(135deg,#A1869E,#797596);  /*background-image: url("Images/photography.png");*/ background-size: cover; z-index: 2; background-position: center;}
@@ -69,7 +70,7 @@
 <body>
 
 <nav id="main-nav">
-  <a href="index.html" class="nav-logo">YourWebBuild</a>
+  <a href="index.html" class="nav-logo"><img src="Images/ywb-gold.png" alt="logo"><span class="hide-text"> YourWebBuild </span></a> 
   <div class="nav-links" id="navLinks">
     <a href="index.html#services">Services</a>
     <a href="process.html">Process</a>
@@ -105,9 +106,10 @@
   <div class="portfolio-grid" id="portfolioGrid">
 
     <!-- 1-PAGE / STARTER -->
-    <a href="https://darthomale88.github.io/Clean-house-site-demo/" class="port-card reveal d1" data-tier="1">
+    <a href="https://darthomale88.github.io/Clean-house-site-demo/" target="_blank" class="port-card reveal d1" data-tier="1">
       <div class="port-img p1">
-        <div class="port-label"><span>Clean House</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>
+		<img src="Images/Clean-house-site-demo_.png">
+       <!-- <div class="port-label"><span>Clean House</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>-->
       </div>
       <div class="port-info">
         <h4>Clean House Power Washing</h4>
@@ -117,12 +119,13 @@
       </div>
     </a>
 	
-    <a href="https://darthomale88.github.io/one-page-barber" class="port-card reveal d1" data-tier="1">
-      <div class="port-img p1">
-        <div class="port-label"><span>Barber</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>
+    <a href="https://darthomale88.github.io/one-page-barber" target="_blank" class="port-card reveal d1" data-tier="1">
+       <div class="port-img p1">
+		<img src="Images/one-page-barber_.png">
+       <!-- <div class="port-label"><span>Clean House</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>-->
       </div>
       <div class="port-info">
-        <h4>Barber</h4>
+        <h4>Marcus the Barber</h4>
         <p>1-page site with contact form, service list, and portfolio</p>
         <p class="port-outcome">Built to turn local searches into booked appointments.</p>
         <span class="port-tag">Starter Site</span>
@@ -133,11 +136,12 @@
 	
 
     <!-- 5-PAGE / PREMIUM -->
-    <a href="https://darthomale88.github.io/Photography-site" class="port-card reveal d3" data-tier="5">
+    <a href="https://darthomale88.github.io/Photography-site"  target="_blank" class="port-card reveal d3" data-tier="5">
       <!-- TODO: wrap this card in <a href="LIVE_DEMO_URL"> once a demo link exists -->
       <div class="port-img p3 ">
-        <div class="port-label"><span>Mara</span><p style="font-size:.75rem;color:#faffb0;letter-spacing:.1em;text-transform:uppercase;">Photography</p></div>
-      </div>
+       <img src="Images/tall-screenshot.png">
+       <!-- <div class="port-label"><span>Clean House</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Exterior Cleaning</p></div>-->
+	   </div>
       <div class="port-info">
         <h4>Mara Leigh Photography</h4>
         <p>5-page portfolio with full gallery, pricing, and contact</p>
@@ -146,14 +150,40 @@
       </div>
     </a>
 	
-	<a href="https://darthomale88.github.io/Barber-site" class="port-card reveal d2" data-tier="5">   
+	<a href="https://darthomale88.github.io/Barber-site"  target="_blank" class="port-card reveal d2" data-tier="5">   
       <!-- TODO: wrap this card in <a href="LIVE_DEMO_URL"> once a demo link exists -->
       <div class="port-img p2">
-        <div class="port-label"><span>Prestige</span><p style="font-size:.75rem;color:#8a97b0;letter-spacing:.1em;text-transform:uppercase;">Barbershop</p></div>
+       <img src="Images/Barber-site_.png">
       </div>
       <div class="port-info">
-        <h4>Prestige Cuts Barbershop</h4>
+        <h4>Naptown Barber</h4>
         <p>5-page site with gallery, testimonials, and booking CTA</p>
+        <p class="port-outcome">Designed to keep the chairs full with easy online booking.</p>
+        <span class="port-tag">premium Site</span>
+      </div>
+    </a>
+	
+	<a href="https://darthomale88.github.io/Roofer"  target="_blank" class="port-card reveal d2" data-tier="5">   
+      <!-- TODO: wrap this card in <a href="LIVE_DEMO_URL"> once a demo link exists -->
+      <div class="port-img p2">
+       <img src="Images/Roofer_.png">
+      </div>
+      <div class="port-info">
+        <h4>Summit Ridge Roofing</h4>
+        <p>5-page site with gallery, testimonials, and booking CTA</p>
+        <p class="port-outcome">Designed to keep the chairs full with easy online booking.</p>
+        <span class="port-tag">premium Site</span>
+      </div>
+    </a>
+	
+	<a href="https://darthomale88.github.io/Victory-Temple-Church"  target="_blank" class="port-card reveal d2" data-tier="5">   
+      <!-- TODO: wrap this card in <a href="LIVE_DEMO_URL"> once a demo link exists -->
+      <div class="port-img p2">
+       <img src="Images/Victory-Temple-Church_.png" alt="Image of a Church website design">
+      </div>
+      <div class="port-info">
+        <h4>Victory Temple Church</h4>
+        <p>5-page site with gallery, visit page, and contact form</p>
         <p class="port-outcome">Designed to keep the chairs full with easy online booking.</p>
         <span class="port-tag">premium Site</span>
       </div>
@@ -192,7 +222,7 @@
     <a href="process.html">Process</a>
     <a href="pricing.html">Pricing</a>
     <a href="contact.html">Contact</a>
-    <a href="https://billing.stripe.com/p/login/test_aFa7sK5XEgO0h2pbyrfMA00">Manage My Plan</a>
+    <a href="https://billing.stripe.com/p/login/aFa7sK5XEgO0h2pbyrfMA00" target="_blank">Manage My Plan</a>
   </div>
   <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
 </footer>
@@ -215,5 +245,13 @@ tabs.forEach(tab => {
   });
 });
 </script>
+
+<a class="call-fab">
+	<a href="tel:+13177312108" class="call-fab" aria-label="Call YourWebBuild">
+	  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+		<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+	  </svg>
+	</a>
+</a>
 </body>
 </html>

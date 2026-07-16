@@ -56,6 +56,26 @@
 .plan-card.featured .plan-cta{background:var(--gold);color:var(--navy);}
 .plan-card.featured .plan-cta:hover{background:var(--gold2);border-color:var(--gold2);}
 
+/* Locked plans (not yet open — waitlist only) */
+.plan-card.locked{border-style:dashed;border-color:rgba(201,168,76,.4);background:var(--navy2);}
+.plan-card.locked:hover{border-color:rgba(201,168,76,.6);}
+.coming-soon-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--navy2);border:1px solid var(--gold);color:var(--gold);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.28rem 1.1rem;white-space:nowrap;border-radius:0 0 2px 2px;}
+.plan-cta-locked{background:transparent;border:1px dashed var(--gold);color:var(--gold);cursor:pointer;width:100%;font-family:'DM Sans',sans-serif;}
+.plan-cta-locked:hover{background:rgba(201,168,76,.1);color:var(--gold);}
+
+/* Bundle & Save */
+.bundle-section{padding:0 5% 6rem;}
+.bundle-inner{max-width:1100px;margin:0 auto;}
+.bundle-header{text-align:center;margin-bottom:2.5rem;}
+.bundle-header p{color:var(--muted);font-size:.95rem;max-width:560px;margin:.75rem auto 0;line-height:1.6;}
+.bundle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+.bundle-card{border:1px solid var(--border);background:var(--navy3);padding:1.75rem 1.75rem 2rem;text-align:center;}
+.bundle-card .bundle-tier{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;}
+.bundle-card .bundle-was{font-size:.85rem;color:var(--muted);text-decoration:line-through;opacity:.6;}
+.bundle-card .bundle-now{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:700;color:var(--gold);line-height:1.2;margin:.25rem 0 .5rem;}
+.bundle-card .bundle-cond{font-size:.85rem;color:var(--muted);line-height:1.5;}
+.bundle-card .bundle-cond strong{color:var(--white);font-weight:500;}
+
 /* Comparison table */
 .compare-section{padding:0 5% 5rem;}
 .compare-inner{max-width:860px;margin:0 auto;}
@@ -90,6 +110,67 @@
   .compare-table{font-size:.8rem;}
   .compare-table th,.compare-table td{padding:.6rem .5rem;}
 }
+
+/* Thank-you modal (shown after a successful Stripe checkout redirect) */
+.twb-modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,15,28,.78);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:20px;z-index:9999;animation:twb-fade .25s ease-out;}
+.twb-modal-overlay.twb-open{display:flex;}
+@keyframes twb-fade{from{opacity:0;}to{opacity:1;}}
+.twb-card{max-width:480px;width:100%;max-height:90vh;overflow-y:auto;background:var(--navy3);border:1px solid var(--border);border-radius:4px;padding:40px 32px 32px;position:relative;text-align:center;animation:twb-rise .35s ease-out both;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+@keyframes twb-rise{from{opacity:0;transform:translateY(14px) scale(.98);}to{opacity:1;transform:translateY(0) scale(1);}}
+.twb-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;background:transparent;color:var(--muted);font-size:1.3rem;line-height:1;cursor:pointer;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:color .15s ease,background .15s ease;}
+.twb-close:hover{color:var(--gold);background:rgba(255,255,255,.05);}
+.twb-close:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.twb-check{width:52px;height:52px;margin:0 auto 22px;}
+.twb-check circle{fill:none;stroke:var(--gold);stroke-width:1.4;opacity:.55;}
+.twb-check path{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30;animation:twb-draw .6s .35s ease-out forwards;}
+@keyframes twb-draw{to{stroke-dashoffset:0;}}
+.twb-card h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.9rem;color:var(--white);margin-bottom:10px;}
+.twb-lede{font-size:.94rem;line-height:1.55;color:var(--muted);margin-bottom:24px;}
+.twb-lede strong{color:var(--gold);font-weight:500;}
+.twb-divider{width:52px;height:1px;background:var(--gold);opacity:.5;margin:0 auto 24px;}
+.twb-features{list-style:none;text-align:left;display:flex;flex-direction:column;gap:12px;margin-bottom:26px;}
+.twb-features li{display:flex;align-items:flex-start;gap:10px;font-size:.86rem;color:var(--muted);line-height:1.4;}
+.twb-features li .twb-dot{flex-shrink:0;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-top:7px;}
+.twb-features li span.twb-label{color:var(--white);font-weight:500;}
+.twb-portal-btn{display:block;width:100%;text-align:center;background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-weight:500;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;padding:.85rem 0;border-radius:3px;text-decoration:none;transition:background .2s ease,transform .15s ease;}
+.twb-portal-btn:hover{background:var(--gold2);transform:translateY(-1px);}
+@media(prefers-reduced-motion:reduce){.twb-modal-overlay,.twb-card,.twb-check path{animation:none!important;opacity:1!important;stroke-dashoffset:0!important;}}
+@media(max-width:480px){.twb-card{padding:34px 22px 26px;}.twb-card h2{font-size:1.6rem;}}
+
+/* Waitlist modal (Standard / Premium — reuses the thank-you modal's visual language) */
+.wl-modal-overlay{display:none;position:fixed;inset:0;background:rgba(10,15,28,.78);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:20px;z-index:9999;animation:twb-fade .25s ease-out;}
+.wl-modal-overlay.wl-open{display:flex;}
+.wl-card{max-width:440px;width:100%;max-height:90vh;overflow-y:auto;background:var(--navy3);border:1px solid var(--border);border-radius:4px;padding:36px 32px 32px;position:relative;text-align:center;animation:twb-rise .35s ease-out both;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.wl-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;background:transparent;color:var(--muted);font-size:1.3rem;line-height:1;cursor:pointer;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:color .15s ease,background .15s ease;}
+.wl-close:hover{color:var(--gold);background:rgba(255,255,255,.05);}
+.wl-eyebrow{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.wl-card h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.7rem;color:var(--white);margin-bottom:10px;}
+.wl-lede{font-size:.88rem;line-height:1.55;color:var(--muted);margin-bottom:22px;}
+.wl-divider{width:44px;height:1px;background:var(--gold);opacity:.5;margin:0 auto 22px;}
+.wl-card form{text-align:left;}
+.wl-card label{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.wl-card input[type="text"],
+.wl-card input[type="email"],
+.wl-card textarea{
+  width:100%;
+  background:var(--navy2);
+  border:1px solid var(--border);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-size:.9rem;
+  padding:.7rem .8rem;
+  margin-bottom:1.1rem;
+  border-radius:2px;
+}
+.wl-card input:focus,
+.wl-card textarea:focus{outline:none;border-color:var(--gold);}
+.wl-card textarea{resize:vertical;min-height:64px;}
+.wl-submit{width:100%;padding:.85rem;background:var(--gold);color:var(--navy);border:none;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s ease;}
+.wl-submit:hover{background:var(--gold2);}
+.wl-confirm{display:none;}
+.wl-confirm.wl-confirm-open{display:block;}
+.wl-error{display:none;color:#e08a7d;font-size:.82rem;margin-top:-4px;margin-bottom:12px;}
+.wl-error.wl-error-open{display:block;}
 </style>
 </head>
 <body>
@@ -123,47 +204,46 @@
 <section id="build-pricing">
   <div class="gold-line reveal d1"></div>
   <h2 class="section-title reveal d2">One-Time Website Builds</h2>
-  <p class="reveal d3" style="color:var(--gold);font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;">✦ Year-End Sale · New-Client Pricing Through Dec 31</p>
-  <p class="section-sub reveal d3">Choose the page count that fits your business — or talk it through with us first.</p>
+  <p class="section-sub reveal d3">Choose the page count that fits your business — or talk it through with us first. Every build below can be bundled with a Care Plan to lower your upfront cost.</p>
   <div class="pricing-grid">
     <div class="price-card reveal d1">
       <div class="price-name">Starter</div>
       <div class="price-amount">$500</div>
-      <div class="price-range"><span style="text-decoration:line-through;opacity:.55;">$750</span>&nbsp;Year-end sale price</div>
+      <div class="price-range">1-page website</div>
       <ul class="price-features">
-        <li class="hl">1-page website</li>
-        <li>Mobile-friendly design</li>
+        <li class="hl">Custom design</li>
+        <li>Mobile responsive</li>
         <li>Contact form</li>
-        <li>Google Map embed</li>
-        <li>Basic SEO setup</li>
-        <li>1 round of revisions</li>
+        <li>Basic on-page SEO</li>
+        <li>SSL, Analytics &amp; Search Console</li>
+        <li>30 days of support</li>
       </ul>
       <a href="contact.html" class="btn" style="width:100%;text-align:center;display:block;">Get Started</a>
     </div>
     <div class="price-card featured reveal d2">
       <div class="featured-badge">Most Popular</div>
-      <div class="price-name">Business</div>
-      <div class="price-amount">$800</div>
-      <div class="price-range"><span style="text-decoration:line-through;opacity:.55;">$1,500</span>&nbsp;Year-end sale price</div>
+      <div class="price-name">Growth</div>
+      <div class="price-amount">$1,595</div>
+      <div class="price-range">3-page website</div>
       <ul class="price-features">
-        <li class="hl">3-page website</li>
-        <li>Home, About, Services, Contact</li>
+        <li class="hl">Home, About, Services, Contact</li>
         <li>Gallery &amp; testimonials</li>
-        <li>Basic SEO setup</li>
-        <li>2 rounds of revisions</li>
+        <li>Basic on-page SEO</li>
+        <li>SSL, Analytics &amp; Search Console</li>
+        <li>30 days of support</li>
       </ul>
       <a href="contact.html" class="btn btn-fill" style="width:100%;text-align:center;display:block;">Get Started</a>
     </div>
     <div class="price-card reveal d3">
-      <div class="price-name">Premium</div>
-      <div class="price-amount">$1,000</div>
-      <div class="price-range"><span style="text-decoration:line-through;opacity:.55;">$3,500</span>&nbsp;Year-end sale price</div>
+      <div class="price-name">Professional</div>
+      <div class="price-amount">$2,495</div>
+      <div class="price-range">5-page website</div>
       <ul class="price-features">
-        <li class="hl">5-page website</li>
-        <li>Copywriting assistance</li>
+        <li class="hl">Copywriting assistance</li>
         <li>Gallery &amp; testimonials</li>
-        <li>Google Business Profile help</li>
-        <li>3 rounds of revisions</li>
+        <li>Basic on-page SEO</li>
+        <li>SSL, Analytics &amp; Search Console</li>
+        <li>30 days of support</li>
       </ul>
       <a href="contact.html" class="btn" style="width:100%;text-align:center;display:block;">Get Started</a>
     </div>
@@ -178,46 +258,87 @@
   <div class="plans-grid">
 
     <div class="plan-card reveal d1">
-      <div class="plan-tier">Basic</div>
+      <div class="plan-tier">Essentials</div>
       <div class="plan-price"><sup>$</sup>49<span>/mo</span></div>
-      <p class="plan-desc">The essentials to keep your site live, secure, and backed up — hands off.</p>
+      <p class="plan-desc">The essentials for peace of mind. Your site stays live, secure, and backed up automatically, no action required from you.</p>
       <ul class="plan-features">
-        <li class="bold-feat"><span class="check">✦</span> Hosting</li>
-        <li><span class="check">✦</span> Site monitoring</li>
-        <li><span class="check">✦</span> Regular backups</li>
+        <li class="bold-feat"><span class="check">✦</span> Hosting, security &amp; backups</li>
+        <li><span class="check">✦</span> Uptime monitoring</li>
+        <li><span class="check">✦</span> Minor edits</li>
+        <li><span class="check">✦</span> Plugin/library updates</li>
+        <li><span class="check">✦</span> Email support</li>
       </ul>
-      <a href="https://buy.stripe.com/test_aFa7sK5XEgO0h2pbyrfMA00" class="plan-cta">Get Started</a>
-    </div>
+      <a href="https://buy.stripe.com/aFa7sK5XEgO0h2pbyrfMA00" class="plan-cta">Get Started</a>
+    </div>           
 
-    <div class="plan-card featured reveal d2">
-      <div class="plan-tier">Standard</div>
+    <!-- GROWTH — locked until SEO tooling confidence is built. Waitlist only. -->
+    <div class="plan-card locked reveal d2" data-tier="Growth" data-price="$149/mo">
+      <span class="coming-soon-badge">Coming Soon</span>
+      <div class="plan-tier">Growth</div>
       <div class="plan-price"><sup>$</sup>149<span>/mo</span></div>
-      <p class="plan-desc">Everything in Basic, plus up to 1 hour of edits per month — text, photos, hours, whatever you need.</p>
+      <p class="plan-desc">Everything in Essentials, plus up to 45 minutes of edits per month and ongoing SEO work to keep you competitive and growing.</p>
       <ul class="plan-features">
-        <li class="bold-feat"><span class="check">✦</span> Hosting</li>
-        <li><span class="check">✦</span> Regular backups</li>
-        <li class="bold-feat"><span class="check">✦</span> Up to 1 hour of edits/month</li>
-        <li><span class="check">✦</span> Content updates (text, images)</li>
-        <li><span class="check">✦</span> Monthly check-in</li>
+        <li><span class="check">✦</span> Everything in Essentials</li>
+        <li><span class="check">✦</span> Monthly SEO improvements</li>
+        <li><span class="check">✦</span> Content updates</li>
+        <li><span class="check">✦</span> Performance optimization</li>
+        <li><span class="check">✦</span> Analytics reports</li>
+        <li><span class="check">✦</span> Quarterly strategy review</li>
+        <li class="bold-feat"><span class="check">✦</span> Up to 45 min of edits/month</li>
       </ul>
-      <a href="https://buy.stripe.com/test_00w14m4TAfJWh2pfOHfMA01" class="plan-cta">Get Started</a>
+      <button type="button" class="plan-cta plan-cta-locked wl-trigger">Join the Waitlist</button>
     </div>
 
-    <div class="plan-card reveal d3">
-      <div class="plan-tier">Premium</div>
+    <!-- COMPLETE — locked until SEO tooling confidence is built. Waitlist only. -->
+    <div class="plan-card locked featured reveal d3" data-tier="Complete" data-price="$299/mo">
+      <span class="coming-soon-badge">Coming Soon</span>
+      <div class="plan-tier">Complete</div>
       <div class="plan-price"><sup>$</sup>299<span>/mo</span></div>
-      <p class="plan-desc">Full care with up to 2 hours of edits per month and priority turnaround on all requests.</p>
+      <p class="plan-desc">Full care with everything in Growth, plus Google Business Profile management, review strategy, and local SEO built to win nearby searches.</p>
       <ul class="plan-features">
-        <li class="bold-feat"><span class="check">✦</span> Hosting</li>
-        <li><span class="check">✦</span> Regular backups</li>
+        <li><span class="check">✦</span> Everything in Growth</li>
+        <li class="bold-feat"><span class="check">✦</span> Google Business Profile setup &amp; optimization</li>
+        <li><span class="check">✦</span> Monthly GBP posts</li>
+        <li><span class="check">✦</span> Review strategy</li>
+        <li><span class="check">✦</span> Local SEO &amp; citation management</li>
+        <li><span class="check">✦</span> Competitor review</li>
         <li class="bold-feat"><span class="check">✦</span> Up to 2 hours of edits/month</li>
-        <li><span class="check">✦</span> Priority updates</li>
-        <li><span class="check">✦</span> Content &amp; layout changes</li>
-        <li><span class="check">✦</span> Priority response time</li>
+        <li><span class="check">✦</span> Priority support</li>
       </ul>
-      <a href="https://buy.stripe.com/test_cNi00i3PwfJW6nL9qjfMA02" class="plan-cta">Get Started</a>
+      <button type="button" class="plan-cta plan-cta-locked wl-trigger">Join the Waitlist</button>
     </div>
 
+  </div>
+</section>
+
+<!-- BUNDLE & SAVE -->
+<section class="bundle-section">
+  <div class="bundle-inner reveal">
+    <div class="bundle-header">
+      <div class="gold-line" style="margin:0 auto 1.5rem;"></div>
+      <h2 class="section-title" style="margin-bottom:0;">Bundle &amp; Save</h2>
+      <p>Commit to a Care Plan and reduce, or eliminate, your upfront build cost. The longer you stay, the more your site pays for itself.</p>
+    </div>
+    <div class="bundle-grid">
+      <div class="bundle-card">
+        <div class="bundle-tier">Starter Site</div>
+        <div class="bundle-was">$500</div>
+        <div class="bundle-now">FREE</div>
+        <div class="bundle-cond">with a <strong>12-month Growth Plan</strong> commitment ($149/mo)</div>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-tier">Growth Site</div>
+        <div class="bundle-was">$1,595</div>
+        <div class="bundle-now">$795</div>
+        <div class="bundle-cond">with a <strong>12-month Growth Plan</strong> commitment</div>
+      </div>
+      <div class="bundle-card">
+        <div class="bundle-tier">Professional Site</div>
+        <div class="bundle-was">$2,495</div>
+        <div class="bundle-now">$1,295</div>
+        <div class="bundle-cond">with a <strong>12-month Complete Care</strong> commitment</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -229,21 +350,23 @@
       <thead>
         <tr>
           <th></th>
-          <th>Basic<br><span style="color:var(--white);font-size:.9rem;">$49/mo</span></th>
-          <th class="featured-col">Standard<br><span style="color:var(--white);font-size:.9rem;">$149/mo</span></th>
-          <th>Premium<br><span style="color:var(--white);font-size:.9rem;">$299/mo</span></th>
+          <th>Essentials<br><span style="color:var(--white);font-size:.9rem;">$49/mo</span></th>
+          <th class="featured-col">Growth<br><span style="color:var(--white);font-size:.9rem;">$149/mo</span></th>
+          <th>Complete<br><span style="color:var(--white);font-size:.9rem;">$299/mo</span></th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Hosting</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
-        <tr><td>Site monitoring</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
-        <tr><td>Regular backups</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
-        <tr><td>SEO updates</td><td><span class="no">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
-        <tr><td>Monthly edits included</td><td><span class="no">—</span></td><td><span class="val">1 hour</span></td><td><span class="val">2 hours</span></td></tr>
-        <tr><td>Overage rate</td><td><span class="val">$75 / 30 min</span></td><td><span class="val">$80/hour</span></td><td><span class="val">$45/hour</span></td></tr>
+        <tr><td>Hosting, security &amp; backups</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Uptime monitoring</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Plugin/library updates</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Monthly SEO improvements</td><td><span class="no">—</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Performance optimization</td><td><span class="no">—</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Analytics reports</td><td><span class="no">—</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Monthly edits included</td><td><span class="val">Minor edits</span></td><td><span class="val">45 min</span></td><td><span class="val">2 hours</span></td></tr>
         <tr><td>Content updates</td><td><span class="no">—</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
-        <tr><td>Priority updates</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
-        <tr><td>Priority response time</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Google Business Profile setup &amp; optimization</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Local SEO &amp; citation management</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Priority support</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -279,6 +402,11 @@
       <div class="faq-a">You own your site files. If you cancel, we'll hand everything over so you can host it yourself or move it to another provider.</div>
     </div>
 
+    <div class="faq-item">
+      <div class="faq-q">How do the bundle discounts work? <span class="arrow">›</span></div>
+      <div class="faq-a">Instead of discounting the build itself, we reward clients who commit to a Care Plan up front. Sign on for a 12-month Care Plan and your build cost drops, or on the Starter tier, is waived entirely. Ask us for details when you're ready to get started.</div>
+    </div>
+
   </div>
 </section>
 
@@ -304,8 +432,179 @@
   <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
 </footer>
 
+<!-- Thank-you modal, opens automatically when redirected here from a successful Stripe checkout -->
+<div class="twb-modal-overlay" id="twbOverlay" role="dialog" aria-modal="true" aria-labelledby="twbTitle">
+  <div class="twb-card">
+    <button class="twb-close" id="twbClose" aria-label="Close">&times;</button>
+
+    <svg class="twb-check" viewBox="0 0 56 56" aria-hidden="true">
+      <circle cx="28" cy="28" r="26"></circle>
+      <path d="M17 29 L25 37 L40 20"></path>
+    </svg>
+
+    <h2 id="twbTitle">You're All Set</h2>
+    <p class="twb-lede" id="twbLede">
+      Thanks for joining <strong id="twbPlanName">a YourWebBuild Care Plan</strong>. Your site is officially covered, and a confirmation has been sent to your inbox.
+    </p>
+
+    <div class="twb-divider"></div>
+
+    <ul class="twb-features">
+      <li><span class="twb-dot"></span><span><span class="twb-label">Update your payment method.</span> Swap in a new card whenever yours changes.</span></li>
+      <li><span class="twb-dot"></span><span><span class="twb-label">View billing history.</span> Download any past invoice or receipt.</span></li>
+      <li><span class="twb-dot"></span><span><span class="twb-label">Change or cancel your plan.</span> Adjust your tier or end your subscription at any time, no questions asked.</span></li>
+    </ul>
+
+    <a href="https://billing.stripe.com/p/login/aFa7sK5XEgO0h2pbyrfMA00" class="twb-portal-btn" id="twbPortalBtn">Manage My Plan</a>
+  </div>
+</div>
+
+<!-- Waitlist modal, opens when Growth or Complete's "Join the Waitlist" button is clicked -->
+<div class="wl-modal-overlay" id="wlOverlay" role="dialog" aria-modal="true" aria-labelledby="wlTitle">
+  <div class="wl-card">
+    <button class="wl-close" id="wlClose" aria-label="Close">&times;</button>
+
+    <div id="wlFormView">
+      <div class="wl-eyebrow">Coming Soon</div>
+      <h2 id="wlTitle">Join the Waitlist</h2>
+      <p class="wl-lede" id="wlLede">This plan isn't open yet — I'm building out SEO tooling confidence before offering it. Leave your info and I'll reach out personally the moment it's ready.</p>
+      <div class="wl-divider"></div>
+
+      <!-- Netlify Forms: same pattern as the site's existing contact form -->
+      <form name="tier-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="wlForm">
+        <input type="hidden" name="form-name" value="tier-waitlist" />
+        <input type="hidden" name="tier" id="wlTierField" value="" />
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <label for="wlName">Name</label>
+        <input type="text" name="name" id="wlName" required>
+
+        <label for="wlEmail">Email</label>
+        <input type="email" name="email" id="wlEmail" required>
+
+        <label for="wlNote">What are you hoping this plan helps with? (optional)</label>
+        <textarea name="note" id="wlNote" rows="3" placeholder="e.g. showing up higher on Google for local searches"></textarea>
+
+        <div class="wl-error" id="wlError">Something went wrong submitting the form. Please try again.</div>
+        <button type="submit" class="wl-submit">Join Waitlist</button>
+      </form>
+    </div>
+
+    <div class="wl-confirm" id="wlConfirm">
+      <svg class="twb-check" viewBox="0 0 56 56" aria-hidden="true">
+        <circle cx="28" cy="28" r="26"></circle>
+        <path d="M17 29 L25 37 L40 20"></path>
+      </svg>
+      <h2>You're on the list</h2>
+      <p class="wl-lede">I'll reach out personally once this plan is ready to launch.</p>
+    </div>
+  </div>
+</div>
+
 <script src="script.js"></script>
 <script>
+// Thank-you modal logic
+(function () {
+  const overlay = document.getElementById('twbOverlay');
+  const closeBtn = document.getElementById('twbClose');
+  const planNameEl = document.getElementById('twbPlanName');
+
+  function openModal(planName) {
+    if (planName) planNameEl.textContent = 'the ' + planName + ' Plan';
+    overlay.classList.add('twb-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('twb-open');
+    document.body.style.overflow = '';
+    const url = new URL(window.location.href);
+    url.searchParams.delete('success');
+    url.searchParams.delete('plan');
+    window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('twb-open')) closeModal(); });
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === 'true') openModal(params.get('plan'));
+})();
+
+// Waitlist modal logic (Growth / Complete)
+(function () {
+  const overlay = document.getElementById('wlOverlay');
+  const closeBtn = document.getElementById('wlClose');
+  const title = document.getElementById('wlTitle');
+  const lede = document.getElementById('wlLede');
+  const tierField = document.getElementById('wlTierField');
+  const formView = document.getElementById('wlFormView');
+  const confirmView = document.getElementById('wlConfirm');
+  const form = document.getElementById('wlForm');
+  const errorBox = document.getElementById('wlError');
+
+  function openWaitlist(tier, price) {
+    tierField.value = tier;
+    title.textContent = 'Join the ' + tier + ' Waitlist';
+    lede.textContent = tier + ' (' + price + ") isn't open yet — I'm building out SEO tooling confidence before offering it. Leave your info and I'll reach out personally the moment it's ready.";
+    formView.style.display = 'block';
+    confirmView.classList.remove('wl-confirm-open');
+    errorBox.classList.remove('wl-error-open');
+    overlay.classList.add('wl-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeWaitlist() {
+    overlay.classList.remove('wl-open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.wl-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const card = btn.closest('.plan-card');
+      openWaitlist(card.dataset.tier, card.dataset.price);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeWaitlist);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeWaitlist(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('wl-open')) closeWaitlist(); });
+
+  function encodeFormData(data) {
+    return Object.keys(data).map(function (key) {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+    }).join('&');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorBox.classList.remove('wl-error-open');
+
+    const payload = {
+      'form-name': 'tier-waitlist',
+      tier: tierField.value,
+      name: document.getElementById('wlName').value,
+      email: document.getElementById('wlEmail').value,
+      note: document.getElementById('wlNote').value
+    };
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeFormData(payload)
+    })
+      .then(function () {
+        formView.style.display = 'none';
+        confirmView.classList.add('wl-confirm-open');
+        form.reset();
+      })
+      .catch(function () {
+        errorBox.classList.add('wl-error-open');
+      });
+  });
+})();
+
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {

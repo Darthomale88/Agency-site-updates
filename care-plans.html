@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Monthly Care Plans | YourWebBuild</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0b0f1a;--navy2:#111827;--navy3:#1a2235;
+  --gold:#c9a84c;--gold2:#e8c96a;--white:#f0ece3;--muted:#8a97b0;--border:#ffffff14;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.00s;}.d2{transition-delay:.12s;}.d3{transition-delay:.24s;}.d4{transition-delay:.36s;}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(11,15,26,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);}
+.nav-back{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+.nav-back:hover{color:var(--gold);}
+.nav-back::before{content:'←';}
+.btn{display:inline-block;padding:.75rem 1.8rem;border:1px solid var(--gold);color:var(--gold);font-family:'DM Sans',sans-serif;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s;background:transparent;}
+.btn:hover{background:var(--gold);color:var(--navy);}
+.btn-fill{background:var(--gold);color:var(--navy);font-weight:500;}
+.btn-fill:hover{background:var(--gold2);border-color:var(--gold2);}
+
+/* Hero band */
+.page-hero{padding:10rem 5% 5rem;text-align:center;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,#c9a84c0c 0%,transparent 70%);pointer-events:none;}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0;animation:fadeUp .7s cubic-bezier(.22,1,.36,1) .2s forwards;}
+.page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.08;margin-bottom:1.2rem;opacity:0;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) .35s forwards;}
+.page-title em{font-style:italic;color:var(--gold);}
+.page-sub{font-size:1.05rem;color:var(--muted);max-width:540px;margin:0 auto 1.5rem;opacity:0;animation:fadeUp .8s cubic-bezier(.22,1,.36,1) .5s forwards;}
+.gold-divider{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.5rem auto 0;animation:expandLine 1s cubic-bezier(.22,1,.36,1) .8s forwards;}
+@keyframes expandLine{to{width:200px;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* Plans grid */
+.plans-section{padding:4rem 5% 6rem;}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto;}
+
+.plan-card{position:relative;border:1px solid var(--border);background:var(--navy2);padding:2.5rem 2rem 2rem;display:flex;flex-direction:column;transition:border-color .3s,transform .35s cubic-bezier(.22,1,.36,1);}
+.plan-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.35);}
+.plan-card.featured{border-color:var(--gold);background:var(--navy3);}
+.plan-card.featured::before{content:'Most Popular';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.28rem 1.1rem;white-space:nowrap;}
+
+.plan-tier{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;}
+.plan-price{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;line-height:1;color:var(--white);}
+.plan-price sup{font-size:1.8rem;vertical-align:top;margin-top:.6rem;color:var(--gold);}
+.plan-price span{font-size:1rem;font-family:'DM Sans',sans-serif;font-weight:400;color:var(--muted);margin-left:.2rem;}
+.plan-desc{font-size:.88rem;color:var(--muted);margin:.75rem 0 1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);line-height:1.65;}
+
+.plan-features{list-style:none;flex:1;margin-bottom:2rem;}
+.plan-features li{font-size:.9rem;color:var(--muted);padding:.45rem 0;display:flex;align-items:flex-start;gap:.7rem;border-bottom:1px solid var(--border);}
+.plan-features li:last-child{border-bottom:none;}
+.plan-features li .check{color:var(--gold);font-size:.8rem;flex-shrink:0;margin-top:.18rem;}
+.plan-features li.bold-feat{color:var(--white);}
+
+.plan-cta{display:block;text-align:center;padding:.85rem;border:1px solid var(--gold);color:var(--gold);font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;margin-top:auto;}
+.plan-cta:hover{background:var(--gold);color:var(--navy);}
+.plan-card.featured .plan-cta{background:var(--gold);color:var(--navy);}
+.plan-card.featured .plan-cta:hover{background:var(--gold2);border-color:var(--gold2);}
+
+/* Comparison table */
+.compare-section{padding:0 5% 5rem;}
+.compare-inner{max-width:860px;margin:0 auto;}
+.compare-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;margin-bottom:2rem;text-align:center;}
+.compare-table{width:100%;border-collapse:collapse;font-size:.88rem;}
+.compare-table th{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:.75rem 1rem;text-align:center;border-bottom:1px solid var(--border);}
+.compare-table th:first-child{text-align:left;}
+.compare-table td{padding:.8rem 1rem;border-bottom:1px solid var(--border);text-align:center;color:var(--muted);}
+.compare-table td:first-child{text-align:left;color:var(--white);font-size:.9rem;}
+.compare-table .yes{color:var(--gold);font-size:1rem;}
+.compare-table .no{color:#3a4460;font-size:1rem;}
+.compare-table .val{color:var(--white);font-size:.85rem;}
+.compare-table thead th.featured-col{color:var(--gold);}
+.compare-table tbody tr:hover td{background:rgba(255,255,255,.015);}
+
+/* FAQ */
+.faq-section{padding:0 5% 5rem;}
+.faq-inner{max-width:720px;margin:0 auto;}
+.faq-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:600;margin-bottom:2rem;text-align:center;}
+.faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+.faq-q{font-size:.95rem;font-weight:500;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.faq-q .arrow{color:var(--gold);font-size:.8rem;transition:transform .3s;}
+.faq-item.open .arrow{transform:rotate(90deg);}
+.faq-a{font-size:.88rem;color:var(--muted);max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;line-height:1.75;}
+.faq-item.open .faq-a{max-height:200px;padding-top:.75rem;}
+
+/* CTA banner */
+.cta-band{margin:0 5% 5rem;border:1px solid var(--border);background:var(--navy3);padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.cta-band-text h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;margin-bottom:.4rem;}
+.cta-band-text p{font-size:.9rem;color:var(--muted);}
+
+footer{padding:2rem 5%;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--gold);}
+.footer-copy{font-size:.8rem;color:var(--muted);}
+.footer-links{display:flex;gap:1.5rem; flex-wrap: wrap;}
+.footer-links a{font-size:.8rem;color:var(--muted);}
+.footer-links a:hover{color:var(--gold);}
+
+@media(max-width:900px){
+  .plans-grid{grid-template-columns:1fr;max-width:440px;}
+  .plan-card{padding:2rem 1.5rem 1.75rem;}
+}
+@media(max-width:640px){
+  .cta-band{flex-direction:column;text-align:center;}
+  .compare-table{font-size:.8rem;}
+  .compare-table th,.compare-table td{padding:.6rem .5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">Back to main site</a>
+  <a href="index.html" class="nav-logo"><img src="Images/ywb-gold.png" alt="logo"><span class="hide-text"> YourWebBuild </span></a> 
+  <a href="index.html#contact" class="btn btn-fill">Get a Quote</a>
+</nav>
+
+
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-eyebrow">Monthly Care Plans</div>
+  <h1 class="page-title">Your site, <em>always taken care of.</em></h1>
+  <p class="page-sub">After we launch your site, we stick around. Hosting, backups, & updates handled for you every month so you can focus on running your business.</p>
+  <div class="gold-divider"></div>
+</div>
+
+<!-- PLAN CARDS -->
+<section class="plans-section">
+  <div class="plans-grid">
+
+    <!-- Basic -->
+    <div class="plan-card reveal d1">
+      <div class="plan-tier">Basic</div>
+      <div class="plan-price"><sup>$</sup>49<span>/mo</span></div>
+      <p class="plan-desc">The essentials to keep your site live, secure, and backed up — hands off.</p>
+      <ul class="plan-features">
+        <li class="bold-feat"><span class="check">✦</span> Hosting</li>
+        <li><span class="check">✦</span> Site monitoring</li>
+        <li><span class="check">✦</span> Regular backups</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_aFa7sK5XEgO0h2pbyrfMA00" class="plan-cta">Get Started</a> <!--index.html#contact-->
+    </div>
+
+    <!-- Standard (featured) -->
+    <div class="plan-card featured reveal d2">
+      <div class="plan-tier">Standard</div>
+      <div class="plan-price"><sup>$</sup>149<span>/mo</span></div>
+      <p class="plan-desc">Everything in Basic, plus up to 1 hour of edits per month — text, photos, hours, whatever you need.</p>
+      <ul class="plan-features">
+        <li class="bold-feat"><span class="check">✦</span> Hosting</li>
+        <li><span class="check">✦</span> Regular backups</li>
+        <li class="bold-feat"><span class="check">✦</span> Up to 1 hour of edits/month</li>
+        <li><span class="check">✦</span> Content updates (text, images)</li>
+        <li><span class="check">✦</span> Monthly check-in</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_00w14m4TAfJWh2pfOHfMA01" class="plan-cta">Get Started</a>  <!--index.html#contact-->
+    </div>
+
+    <!-- Premium -->
+    <div class="plan-card reveal d3">
+      <div class="plan-tier">Premium</div>
+      <div class="plan-price"><sup>$</sup>299<span>/mo</span></div>
+      <p class="plan-desc">Full care with up to 2 hours of edits per month and priority turnaround on all requests.</p>
+      <ul class="plan-features">
+        <li class="bold-feat"><span class="check">✦</span> Hosting</li>
+        <li><span class="check">✦</span> Regular backups</li>
+        <li class="bold-feat"><span class="check">✦</span> Up to 2 hours of edits/month</li>
+        <li><span class="check">✦</span> Priority updates</li>
+        <li><span class="check">✦</span> Content & layout changes</li>
+        <li><span class="check">✦</span> Priority response time</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_cNi00i3PwfJW6nL9qjfMA02" class="plan-cta">Get Started</a> <!--index.html#contact-->
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="compare-inner reveal">
+    <h2 class="compare-title">Plan Comparison</h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Basic<br><span style="color:var(--white);font-size:.9rem;">$49/mo</span></th>
+          <th class="featured-col">Standard<br><span style="color:var(--white);font-size:.9rem;">$149/mo</span></th>
+          <th>Premium<br><span style="color:var(--white);font-size:.9rem;">$299/mo</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Hosting</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Site monitoring</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Regular backups</td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+		<tr><td>SEO Updates</td><td><span class="no">✦</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Monthly edits included</td><td><span class="no">—</span></td><td><span class="val">1 hour</span></td><td><span class="val">2 hours</span></td></tr>
+		<tr><td>Overage rates</td><td><span class="val">$75 per 30 min ($150/hr)</span></td><td><span class="val">$80/hour</span></td><td><span class="val">$45/hours</span></td></tr>
+        <tr><td>Content updates</td><td><span class="no">—</span></td><td><span class="yes">✦</span></td><td><span class="yes">✦</span></td></tr>
+        <tr><td>Priority updates</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
+		
+        <tr><td>Priority response time</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✦</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner reveal">
+    <h2 class="faq-title">Common Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I have to be a YourWebBuild client to get a care plan? <span class="arrow">›</span></div>
+      <div class="faq-a">Yes — care plans are available to clients whose sites we built. This ensures we already know your site inside and out and can support it properly.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What counts as an "edit"? <span class="arrow">›</span></div>
+      <div class="faq-a">An edit is anything that changes content on your site — updating text, swapping a photo, changing your hours, adding a new service, tweaking a button, etc. We track time honestly and let you know if a request would go over your monthly allotment.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I roll over unused edit time? <span class="arrow">›</span></div>
+      <div class="faq-a">Edit time does not roll over month to month, but if you have a bigger project coming up you can upgrade your plan at any time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I cancel anytime? <span class="arrow">›</span></div>
+      <div class="faq-a">Yes. Care plans are month-to-month with no long-term contract. Just let us know before your next billing date and we'll cancel it — no hassle.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens to my site if I cancel? <span class="arrow">›</span></div>
+      <div class="faq-a">You own your site files. If you cancel, we'll hand everything over so you can host it yourself or move it to another provider.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band reveal">
+  <div class="cta-band-text">
+    <h3>Not sure which plan is right?</h3>
+    <p>Reach out and we'll help you pick the right fit for your business — no pressure.</p>
+  </div>
+  <a href="index.html#contact" class="btn btn-fill">Contact Us</a>
+</div>
+
+<footer>
+  <div class="footer-logo">YourWebBuild</div>
+  <div class="footer-links">
+    <a href="index.html#services">Services</a>
+	<a href="#process">Process</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#portfolio">Work</a>
+    <a href="index.html#contact">Contact</a>
+	<a href="https://billing.stripe.com/p/login/YOUR_LINK_HERE">Manage My Plan</a>
+  </div>
+  <div class="footer-copy">© 2026 YourWebBuild. Indianapolis, IN.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+
+
+<a class="call-fab">
+	<a href="tel:+13177312108" class="call-fab" aria-label="Call YourWebBuild">
+	  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+		<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+	  </svg>
+	</a>
+</a>
+</body>
+</html>
