@@ -27,7 +27,7 @@ a{color:inherit;text-decoration:none;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5%;background:rgba(11,15,26,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding .3s;}
 nav.scrolled{padding:.8rem 5%;}
 .nav-logo{display: flex; justify-content: center; align-items: center; font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold);background: inherit; margin: auto 0;}
-.nav-logo img{width: 100%; height: 60px; display: flex; align-items: center;}
+.nav-logo img{width: auto; height: 60px; display: flex; align-items: center;}
 .nav-links{display:flex;gap:2rem;}
 .nav-links a{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .2s;position:relative;}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s cubic-bezier(.22,1,.36,1);}
